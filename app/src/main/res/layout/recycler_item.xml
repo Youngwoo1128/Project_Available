@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ch_chopa"/>
+
+        <TextView
+            android:id="@+id/production_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020 SpecialEdition 초파인형"
+            android:layout_toRightOf="@+id/img"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성동구 * "
+            android:textSize="18sp"
+            android:layout_alignLeft="@+id/production_name"
+            android:layout_below="@+id/production_name"/>
+
+        <TextView
+            android:id="@+id/released_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boosted 5 min. ago"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/location"
+            android:layout_below="@+id/production_name"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3000000만원"
+            android:layout_below="@+id/location"
+            android:layout_alignLeft="@id/location"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

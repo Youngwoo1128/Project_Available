@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "datas">
+        <item>창천동</item>
+        <item>은평구</item>
+        <item>하양읍 금락리</item>
+        <item>충주시</item>
+        <item>연세대학교</item>
+    </string-array>
+</resources>
