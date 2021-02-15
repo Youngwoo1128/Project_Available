@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1055235852327",
+    "project_id": "available-b4d03",
+    "storage_bucket": "available-b4d03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055235852327:android:1661bf1213e216fa176602",
+        "android_client_info": {
+          "package_name": "com.mac_available.carrotmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055235852327-rus73fe3hbr6qniobefpre7pkdsbmvbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCRxSHyN6DmoVQLKqPIfDKqnvLGpzysEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055235852327-rus73fe3hbr6qniobefpre7pkdsbmvbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

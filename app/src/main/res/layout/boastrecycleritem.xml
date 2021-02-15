@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp">
+    
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+        android:id="@+id/cv"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_image_24"
+            android:scaleType="centerCrop"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="삐삐"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/cv"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"/>
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="너무 좋아요"
+        android:textSize="12dp"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/cv"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFDDDDDD"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

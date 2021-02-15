@@ -1,5 +1,6 @@
 package com.mac_available.carrotmarket;
 
+//package com.mac_available.carrotmarket;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 public class AdProduction extends RecyclerView.Adapter {
 
     Context context;
-    ArrayList<Item> items;
+    ArrayList<ProductVO> items;
 
-    public AdProduction(Context context, ArrayList<Item> items){
+    public AdProduction(Context context, ArrayList<ProductVO> items){
         this.context = context;
         this.items = items;
     }
@@ -39,13 +40,14 @@ public class AdProduction extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VH vh = (VH)holder;
 
-        Item item = items.get(position);
-        vh.pd_name.setText(item.name);
-        vh.location.setText(item.location);
+        ProductVO item = items.get(position);
+
+        vh.pd_name.setText(item.title);
         vh.time.setText(item.time);
+        vh.location.setText(item.location);
         vh.price.setText(item.price);
 
-        Glide.with(context).load(item.img).into(vh.ivImg);
+        Glide.with(context).load(item.imageUri).into(vh.ivImg);
 
     }
 
