@@ -64,7 +64,10 @@ public class Tab1Fragment extends Fragment {
 
         //더미데이터
         recyclerView = view.findViewById(R.id.recycler);
+        adapter = new AdProduction(getContext(), products);
         recyclerView.setAdapter(adapter);
+
+        //loadData();
 
         btn = view.findViewById(R.id.btn);
 
@@ -140,7 +143,10 @@ public class Tab1Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        loadData();
+    }
 
+    public void loadData(){
         products.clear();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -152,7 +158,7 @@ public class Tab1Fragment extends Fragment {
                     ProductVO item = ds.getValue(ProductVO.class);
                     products.add(0,item);
                 }
-                adapter = new AdProduction(getContext(), products);
+
                 adapter.notifyDataSetChanged();
             }
         });

@@ -3,6 +3,7 @@ package com.mac_available.carrotmarket;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -29,6 +31,7 @@ public class UploadActivity extends AppCompatActivity {
     EditText etTitle, etPrice, etContent;
     Uri imageUri;
     FirebaseStorage firebaseStorage;
+    TextView tvLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class UploadActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.title);
         etPrice = findViewById(R.id.price);
         etContent = findViewById(R.id.content);
+        tvLocation = findViewById(R.id.locationID);
 
     }
 
@@ -55,7 +59,10 @@ public class UploadActivity extends AppCompatActivity {
         if (requestCode == 10 && resultCode == RESULT_OK) {
             imageUri = data.getData();
             Glide.with(this).load(imageUri).into(imageView);
-
+        }
+        if (requestCode == 100 && resultCode == RESULT_OK){
+            String dataStringExtra = data.getStringExtra("location");
+            tvLocation.setText(dataStringExtra);
         }
     }
 
@@ -82,9 +89,10 @@ public class UploadActivity extends AppCompatActivity {
                         price = etPrice.getText().toString();
                         content = etContent.getText().toString();
                         time = new SimpleDateFormat("yyyy.MM.dd").format(new Date());
+                        location = tvLocation.getText().toString();
                         firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference itemRef = firebaseDatabase.getReference("items");
-                        itemRef.push().setValue(new ProductVO(uploadUri, title, price, content,time, location)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        itemRef.push().setValue(new ProductVO(uploadUri, title, price, content,location,time)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(UploadActivity.this, "uploaded", Toast.LENGTH_SHORT).show();
@@ -97,9 +105,16 @@ public class UploadActivity extends AppCompatActivity {
                 });
             }
         });
+        ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("잠시만 기다려주세요~~");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     public void clickLocation(View view) {
-        Intent intent = new Intent(this, )
+        Intent intent = new Intent(this, LocationSearchActivity.class);
+        startActivityForResult(intent, 100);
     }
 }

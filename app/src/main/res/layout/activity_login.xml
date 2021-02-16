@@ -13,8 +13,7 @@
         android:src="@drawable/direct"
         android:layout_toLeftOf="@+id/available"
         android:layout_centerInParent="true"
-        android:layout_marginRight="8dp"
-        android:layout_above="@+id/id"/>
+        android:layout_marginRight="8dp"/>
 
     <TextView
         android:id="@+id/available"
@@ -23,32 +22,26 @@
         android:text="Available"
         android:textAllCaps="false"
         android:layout_centerInParent="true"
-        android:layout_above="@+id/id"
         android:layout_marginBottom="4dp"/>
 
-    <EditText
-        android:id="@+id/id"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:hint="id"/>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id"
-        android:layout_below="@+id/id"
-        android:layout_marginTop="8dp"
-        android:hint="password"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이용하기"
-        android:layout_below="@+id/password"
-        android:layout_alignRight="@+id/password"
+        android:layout_below="@+id/kakao"
+        android:layout_alignRight="@+id/kakao"
         android:onClick="clickBtn"/>
+
+    <ImageView
+        android:id="@+id/kakao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kakao_login_medium_narrow"
+        android:layout_below="@+id/available"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:onClick="clickKakao"/>
 
 
 

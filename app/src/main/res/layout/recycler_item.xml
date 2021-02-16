@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
     android:layout_marginTop="4dp"
@@ -11,13 +11,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ch_chopa"/>
+            android:src="@drawable/ch_chopa"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/production_name"
@@ -28,7 +29,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="32dp"/>
 
         <TextView
             android:id="@+id/location"
@@ -45,8 +46,9 @@
             android:layout_height="wrap_content"
             android:text="Boosted 5 min. ago"
             android:textSize="18sp"
-            android:layout_toRightOf="@id/location"
-            android:layout_below="@+id/production_name"/>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"/>
 
         <TextView
             android:id="@+id/price"

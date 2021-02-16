@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
+        android:name=".KakaoLogin"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,17 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarrotMarket"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LocationSearchActivity"></activity>
-        <activity android:name=".LocalUploadActivity" />
-        <activity android:name=".BellActivity2" />
-        <activity android:name=".BoastEditActivity" />
-        <activity android:name=".UploadActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LocationSearchActivity" />
+        <activity android:name=".LocalUploadActivity" />
+        <activity android:name=".BellActivity2" />
+        <activity android:name=".BoastEditActivity" />
+        <activity android:name=".UploadActivity" />
+        <activity android:name=".LoginActivity">
+
         </activity>
         <activity android:name=".BellActivity" />
         <activity android:name=".FilterActivity" />
@@ -32,11 +36,18 @@
             android:name=".SearchActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".AdvertisingProduction" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"></activity> <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaofc216ad897603be180f518dac5355d5e" />
             </intent-filter>
         </activity>
     </application>
