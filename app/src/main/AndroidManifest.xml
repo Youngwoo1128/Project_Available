@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarrotMarket"
         android:usesCleartextTraffic="true">
+        <activity android:name=".MovieActivity"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,16 +28,14 @@
         <activity android:name=".BellActivity2" />
         <activity android:name=".BoastEditActivity" />
         <activity android:name=".UploadActivity" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".BellActivity" />
         <activity android:name=".FilterActivity" />
         <activity
             android:name=".SearchActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".AdvertisingProduction" />
-        <activity android:name=".MainActivity"></activity> <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
+        <activity android:name=".MainActivity" /> <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

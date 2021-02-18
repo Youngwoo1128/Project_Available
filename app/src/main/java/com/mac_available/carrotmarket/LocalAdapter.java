@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class LocalAdapter extends RecyclerView.Adapter {
+public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.VH> {
 
     Context context;
     ArrayList<LocalVO> items;
@@ -23,20 +23,23 @@ public class LocalAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VH(LayoutInflater.from(context).inflate(R.layout.localrecycler_item, parent, false));
+    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View itemView = inflater.inflate(R.layout.localrecycler_item, parent, false);
+        VH vh = new VH(itemView);
+
+        return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        LocalVO item = items.get(position);
 
-        VH vh = (VH) holder;
-
-       LocalVO item = items.get(position);
-       vh.tv1.setText(item.nick);
-       vh.tv2.setText(item.msg);
-
+        holder.tvName.setText(item.name);
+        holder.tvMsg.setText(item.msg);
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -45,14 +48,13 @@ public class LocalAdapter extends RecyclerView.Adapter {
 
     class VH extends RecyclerView.ViewHolder{
 
-        TextView tv1, tv2;
-
+        TextView tvName, tvMsg;
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            tv1 = itemView.findViewById(R.id.aaa);
-            tv2 = itemView.findViewById(R.id.bbb);
+            tvName = itemView.findViewById(R.id.aaa);
+            tvMsg = itemView.findViewById(R.id.bbb);
         }
     }
 }

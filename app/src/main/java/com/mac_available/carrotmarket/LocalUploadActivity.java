@@ -2,8 +2,12 @@ package com.mac_available.carrotmarket;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,60 +20,55 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class LocalUploadActivity extends AppCompatActivity {
 
     EditText et_local, et_local2;
-    Button localUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_upload);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference rootRef = firebaseDatabase.getReference();
-
         et_local = findViewById(R.id.et_local);
         et_local2 = findViewById(R.id.et_local2);
-        localUpload = findViewById(R.id.localUpload);
+    }
 
-        localUpload.setOnClickListener(new View.OnClickListener() {
+
+
+    public void localUpload(View view) {
+
+        String name = et_local.getText().toString();
+        String msg = et_local2.getText().toString();
+
+        Retrofit retrofit = RetrofitHelper.getRetrofitInstanceScalars();
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+
+        Map<String, String> dataPart = new HashMap<>();
+        dataPart.put("name", name);
+        dataPart.put("msg", msg);
+
+        Call<String> call = retrofitService.postDataToServer(dataPart);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onClick(View v) {
-                String nick = et_local.getText().toString();
-                String msg = et_local2.getText().toString();
+            public void onResponse(Call<String> call, Response<String> response) {
+                String s = response.body();
+                Toast.makeText(LocalUploadActivity.this, ""+s, Toast.LENGTH_SHORT).show();
+            }
 
-                LocalVO local = new LocalVO(nick, msg);
-
-                DatabaseReference localRef = rootRef.child("local");
-                localRef.push().setValue(local).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(LocalUploadActivity.this, "!!!!!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
-
-//                localRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        StringBuffer buffer = new StringBuffer();
-//                        for (DataSnapshot snap : snapshot.getChildren() ){
-//                            LocalVO local = snap.getValue(LocalVO.class);
-//                            String nick = local.nick;
-//                            String msg = local.msg;
-//
-//                            buffer.append(nick + "\n" + msg + "\n\n\n");
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(LocalUploadActivity.this, "error" +t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        finish();
     }
 }

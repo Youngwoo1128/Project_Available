@@ -14,10 +14,9 @@ import retrofit2.http.PartMap;
 public interface RetrofitService {
 
     @Multipart
-    @POST("/Retrofit/insertDB.php")
-    Call<String> postDataToServer(@PartMap Map<String, String> dataPart,
-                                  @Part MultipartBody.Part filePart);
+    @POST("/Available/insertDB.php")
+    Call<String> postDataToServer(@PartMap Map<String, String> dataPart);
 
-    @GET("/Retrofit/loadDB.php")
-    Call<ArrayList<BoastItem>> loadDataFromServer();
+    @GET("Available/loadDB.php")
+    Call<ArrayList<LocalVO>> loadDataFromServer();
 }

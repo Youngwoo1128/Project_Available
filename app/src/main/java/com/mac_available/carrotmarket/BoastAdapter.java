@@ -14,36 +14,37 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class BoastAdapter extends RecyclerView.Adapter<BoastAdapter.VH> {
+public class BoastAdapter extends RecyclerView.Adapter {
 
     Context context;
-    ArrayList<BoastItem> items;
+    ArrayList<BoastVO> items;
 
-    public BoastAdapter(Context context, ArrayList<BoastItem> items){
+    public BoastAdapter(Context context, ArrayList<BoastVO> items){
         this.context = context;
         this.items = items;
     }
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BoastVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View itemView = inflater.inflate(R.layout.boastrecycleritem, parent, false);
-        VH vh = new VH(itemView);
+
+        BoastVH vh = new BoastVH(itemView);
 
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        BoastItem item = items.get(position);
+        BoastVH vh = (BoastVH) holder;
+        BoastVO item = items.get(position);
 
-        String imgUri = "http://vlakd3210000.dothome.co.kr/Retrofit"+item.file;
-        Glide.with(context).load(imgUri).into(holder.iv);
+        vh.tvName.setText(item.title);
+        vh.tvMsg.setText(item.msg);
 
-        holder.tvName.setText(item.title);
-        holder.tvMsg.setText(item.msg);
+        Glide.with(context).load(item.imageUri).into(vh.iv);
     }
 
     @Override
@@ -51,13 +52,13 @@ public class BoastAdapter extends RecyclerView.Adapter<BoastAdapter.VH> {
         return items.size();
     }
 
-    class VH extends RecyclerView.ViewHolder{
+    class BoastVH extends RecyclerView.ViewHolder{
 
         ImageView iv;
         TextView tvName;
         TextView tvMsg;
 
-        public VH(@NonNull View itemView) {
+        public BoastVH(@NonNull View itemView) {
             super(itemView);
 
             iv = itemView.findViewById(R.id.iv);

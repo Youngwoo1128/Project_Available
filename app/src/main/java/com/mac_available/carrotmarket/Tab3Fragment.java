@@ -1,20 +1,22 @@
 package com.mac_available.carrotmarket;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ import retrofit2.Retrofit;
 
 public class Tab3Fragment extends Fragment {
 
-    ArrayList<BoastItem> items = new ArrayList<>();
+    ArrayList<BoastVO> boasts = new ArrayList<>();
     RecyclerView recyclerView;
     BoastAdapter adapter;
     Button btn;
@@ -45,7 +47,7 @@ public class Tab3Fragment extends Fragment {
 
         btn = view.findViewById(R.id.btn);
         recyclerView = view.findViewById(R.id.recycler);
-        adapter = new BoastAdapter(getActivity(), items);
+        adapter = new BoastAdapter(getActivity(), boasts);
         recyclerView.setAdapter(adapter);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -74,32 +76,20 @@ public class Tab3Fragment extends Fragment {
         loadData();
     }
 
-    void loadData(){
-        Retrofit retrofit = RetrofitHelper.getRetrofitInstanceGson();
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<ArrayList<BoastItem>> call = retrofitService.loadDataFromServer();
-        call.enqueue(new Callback<ArrayList<BoastItem>>() {
+    void loadData() {
+         boasts.clear();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference itemRef = database.getReference("boast");
+        itemRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
-            public void onResponse(Call<ArrayList<BoastItem>> call, Response<ArrayList<BoastItem>> response) {
-
-
-                items.clear();
-                adapter.notifyDataSetChanged();
-
-                ArrayList<BoastItem> list = response.body();
-                for (BoastItem item : list){
-                    items.add(0, item);
-                    adapter.notifyItemInserted(0);
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    BoastVO item = ds.getValue(BoastVO.class);
+                    boasts.add(0, item);
                 }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<BoastItem>> call, Throwable t) {
-
+                adapter.notifyDataSetChanged();
             }
         });
     }
-
-
-
 }

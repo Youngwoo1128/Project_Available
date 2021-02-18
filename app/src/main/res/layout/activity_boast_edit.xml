@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="자랑할 글을 적어주세요!!"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:padding="8dp"
         android:background="@drawable/bg_boast_edit"
         android:layout_weight="1"

@@ -5,11 +5,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitHelper {
-    static String baseUrl = "http://vlakd3210000.dothome.co.kr";
+
+    static String baseUri = "http://vlakd3210000.dothome.co.kr/";
 
     static Retrofit getRetrofitInstanceGson(){
         Retrofit.Builder builder = new Retrofit.Builder();
-        builder.baseUrl(baseUrl);
+        builder.baseUrl(baseUri);
         builder.addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
 
@@ -18,7 +19,7 @@ public class RetrofitHelper {
 
     static Retrofit getRetrofitInstanceScalars(){
         Retrofit.Builder builder = new Retrofit.Builder();
-        builder.baseUrl(baseUrl);
+        builder.baseUrl(baseUri);
         builder.addConverterFactory(ScalarsConverterFactory.create());
         Retrofit retrofit = builder.build();
 

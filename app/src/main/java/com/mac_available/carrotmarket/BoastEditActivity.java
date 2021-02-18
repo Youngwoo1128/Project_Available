@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -15,8 +16,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,8 +41,8 @@ public class BoastEditActivity extends AppCompatActivity {
 
     EditText etName, etMsg;
     ImageView iv;
-
-    String imgPath;
+    Uri imageUri;
+    FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,57 +65,52 @@ public class BoastEditActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 20 && resultCode==RESULT_OK){
-            Uri uri = data.getData();
-            if (uri != null){
-                Glide.with(this).load(uri).into(iv);
-            }
+        if (requestCode == 20 && resultCode == RESULT_OK){
+            imageUri = data.getData();
+            Glide.with(this).load(imageUri).into(iv);
         }
     }
 
-    String getRealPathFromUri(Uri uri){
-        String[] proj= {MediaStore.Images.Media.DATA};
-        CursorLoader loader= new CursorLoader(this, uri, proj, null, null, null);
-        Cursor cursor= loader.loadInBackground();
-        int column_index= cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result= cursor.getString(column_index);
-        cursor.close();
-        return  result;
-    }
+    String uploadUri;
+    String title;
+    String msg;
+    FirebaseDatabase firebaseDatabase;
+
 
     public void clickBoastUpload(View view) {
 
-        String name = etName.getText().toString();
-        String msg = etMsg.getText().toString();
-
-        Retrofit retrofit = RetrofitHelper.getRetrofitInstanceScalars();
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-
-        MultipartBody.Part filePart= null;
-        if (imgPath != null){
-            File file = new File(imgPath);
-            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-            filePart = MultipartBody.Part.createFormData("img", file.getName(), requestBody);
-        }
-        Map<String, String> dataPart = new HashMap<>();
-        dataPart.put("name", name);
-        dataPart.put("msg", msg);
-
-        Call<String> call = retrofitService.postDataToServer(dataPart, filePart);
-        call.enqueue(new Callback<String>() {
+        firebaseStorage = FirebaseStorage.getInstance();
+        String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".png";
+        final StorageReference imgRef = firebaseStorage.getReference("boast" + fileName);
+        imgRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String s = response.body();
-                Toast.makeText(BoastEditActivity.this, ""+s, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(BoastEditActivity.this, ""+t, Toast.LENGTH_SHORT).show();
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        uploadUri = uri.toString();
+                        title = etName.getText().toString();
+                        msg = etMsg.getText().toString();
+                        firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference itemRef = firebaseDatabase.getReference("boast");
+                        itemRef.push().setValue(new BoastVO(uploadUri,title,msg)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(BoastEditActivity.this, "uploaded", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+                });
             }
         });
 
-        finish();
+        ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("잠시만 기다려주세요~~~");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
     }
 }

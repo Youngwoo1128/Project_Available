@@ -47,7 +47,7 @@ public class Tab1Fragment extends Fragment {
 
     View.OnClickListener listener;
 
-    ImageView search,filter,bell;
+    ImageView search,filter,bell, movie;
 
     @Nullable
     @Override
@@ -84,6 +84,15 @@ public class Tab1Fragment extends Fragment {
         search = view.findViewById(R.id.search);
         filter = view.findViewById(R.id.filter);
         bell = view.findViewById(R.id.bell);
+        movie = view.findViewById(R.id.movie);
+
+        movie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MovieActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         listener = new View.OnClickListener() {
@@ -109,6 +118,7 @@ public class Tab1Fragment extends Fragment {
         search.setOnClickListener(listener);
         filter.setOnClickListener(listener);
         bell.setOnClickListener(listener);
+
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
