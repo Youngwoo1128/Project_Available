@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AccountActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAccount"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:onClick="clickSaveACCOUNT"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+    <EditText
+        android:id="@+id/et_accountId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="id"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/et_accountPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="pw"
+        android:ems="10"/>
+
+
+
+</LinearLayout>

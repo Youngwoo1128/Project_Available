@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/bg_upload"
+    tools:context=".ItemViewMainActivity">
+
+    <ImageView
+        android:id="@+id/itemViewImage"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+
+
+    <TextView
+        android:id="@+id/itemViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemViewImage"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/itemViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemViewTitle"
+        android:layout_below="@+id/itemViewImage"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="aaa"/>
+
+
+    <TextView
+        android:id="@+id/itemViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemViewTitle"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/btn_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="구매하기"
+        android:onClick="clickChatting"/>
+
+
+
+</RelativeLayout>

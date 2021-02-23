@@ -1,6 +1,7 @@
 package com.mac_available.carrotmarket;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,18 @@ public class BoastAdapter extends RecyclerView.Adapter {
             iv = itemView.findViewById(R.id.iv);
             tvName = itemView.findViewById(R.id.name);
             tvMsg=itemView.findViewById(R.id.msg);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent intent = new Intent(context, ItemVIewBoastActicity.class);
+                    intent.putExtra("title", items.get(pos).title);
+                    intent.putExtra("msg", items.get(pos).msg);
+                    intent.putExtra("img", items.get(pos).imageUri);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

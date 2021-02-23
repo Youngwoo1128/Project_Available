@@ -2,25 +2,31 @@ package com.mac_available.carrotmarket;
 
 //package com.mac_available.carrotmarket;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class AdProduction extends RecyclerView.Adapter {
+public class AdProductionAdapter extends RecyclerView.Adapter {
 
     Context context;
     ArrayList<ProductVO> items;
 
-    public AdProduction(Context context, ArrayList<ProductVO> items){
+    public AdProductionAdapter(Context context, ArrayList<ProductVO> items){
         this.context = context;
         this.items = items;
     }
@@ -73,6 +79,41 @@ public class AdProduction extends RecyclerView.Adapter {
             location = itemView.findViewById(R.id.location);
             time = itemView.findViewById(R.id.released_time);
             price = itemView.findViewById(R.id.price);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+//                Context context;
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                    DatabaseReference databaseReference = firebaseDatabase.getReference("items");
+                    databaseReference.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds: dataSnapshot.getChildren()){
+                                ProductVO productVO = ds.getValue(ProductVO.class);
+                                if (productVO.time.equals(items.get(pos).time)){
+                                    G.currentItem = productVO;
+                                }
+                            }
+                            Intent intent = new Intent(context, ItemViewMainActivity.class);
+                            context.startActivity(intent);
+
+                        }
+                    });
+
+//                    intent.putExtra("name", items.get(pos).title);
+//                    intent.putExtra("price", items.get(pos).price);
+//                    intent.putExtra("content", items.get(pos).content);
+//                    intent.putExtra("img", items.get(pos).imageUri);
+
+
+
+
+
+                }
+            });
 
         }
     }

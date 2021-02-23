@@ -70,9 +70,8 @@ public class Tab3Fragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
+    public void onStart() {
+        super.onStart();
         loadData();
     }
 

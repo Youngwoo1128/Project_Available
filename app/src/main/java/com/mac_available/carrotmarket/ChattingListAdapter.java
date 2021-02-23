@@ -12,35 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.VH> {
+public class ChattingListAdapter extends RecyclerView.Adapter<ChattingListAdapter.VH> {
 
     Context context;
-    ArrayList<LocalVO> items;
+    ArrayList<String> items;
+    ArrayList<Integer> serverNum;
 
-    public LocalAdapter(Context context, ArrayList<LocalVO> items) {
+    public ChattingListAdapter(Context context, ArrayList<String> items, ArrayList<Integer> serverNum) {
         this.context = context;
         this.items = items;
+        this.serverNum = serverNum;
     }
 
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View itemView = inflater.inflate(R.layout.localrecycler_item, parent, false);
-        VH vh = new VH(itemView);
-
-        return vh;
+        return new VH(LayoutInflater.from(context).inflate(R.layout.layout_chatting_list_recycler_item, parent ,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        LocalVO item = items.get(position);
-
-        holder.tvName.setText(item.name);
-        holder.tvMsg.setText(item.msg);
+        holder.tvChattingListId.setText(items.get(position) + "님 과의 대화방");
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -49,23 +42,23 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.VH> {
 
     class VH extends RecyclerView.ViewHolder{
 
-        TextView tvName, tvMsg;
-
+        TextView tvChattingListId;
         public VH(@NonNull View itemView) {
             super(itemView);
-
-            tvName = itemView.findViewById(R.id.aaa);
-            tvMsg = itemView.findViewById(R.id.bbb);
+            tvChattingListId = itemView.findViewById(R.id.tv_chatting_list_id);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(context, ChattingActivity.class);
                     int pos = getAdapterPosition();
-                    Intent intent = new Intent(context, ItemViewLocalActivity.class);
-                    intent.putExtra("name", items.get(pos).name);
-                    intent.putExtra("msg", items.get(pos).msg);
-                    context.startActivity(intent);
+                    if (serverNum.get(pos) == 1){
+                        intent.putExtra("server", G.myId + "&&" + items.get(pos));
+                    } else {
+                        intent.putExtra("server", items.get(pos) + "&&" + G.myId);
+                    }
 
+                    context.startActivity(intent);
 
                 }
             });

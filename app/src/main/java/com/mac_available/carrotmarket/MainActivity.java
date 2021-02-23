@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////
 
         fragments[0] = new Tab1Fragment();
-        fragments[1] = new Tab2Fragment();
-        fragments[2] = new Tab3Fragment();
-        fragments[3] = new Tab4Fragment();
-        fragments[4] = new Tab5Fragment();
+//        fragments[1] = new Tab2Fragment();
+//        fragments[2] = new Tab3Fragment();
+//        fragments[3] = new Tab4Fragment();
+//        fragments[4] = new Tab5Fragment();
 
 
         fragmentManager = getSupportFragmentManager();
@@ -56,31 +56,60 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 FragmentTransaction tran = fragmentManager.beginTransaction();
+                for (int i=0 ; i<fragments.length; i++){
+                    if (fragments[i] != null)
+                    tran.hide(fragments[i]);
+                }
                 Fragment fragment = null;
                 switch (item.getItemId()){
                     case R.id.home:
-                        fragment = fragments[0];
+                        if (fragments[0] == null) {
+                            fragments[0] = new Tab1Fragment();
+                            tran.add(R.id.container, fragments[0]);
+                        }
+                        tran.show(fragments[0]);
+//                        fragment = fragments[0];
                         break;
 
                     case R.id.local:
-                        fragment = fragments[1];
+                        if (fragments[1] == null) {
+                            fragments[1] = new Tab2Fragment();
+                            tran.add(R.id.container, fragments[1]);
+                        }
+                        tran.show(fragments[1]);
+                       // fragment = fragments[1];
                         break;
 
                     case R.id.location:
-                        fragment = fragments[2];
+                        if (fragments[2] == null) {
+                            fragments[2] = new Tab3Fragment();
+                            tran.add(R.id.container, fragments[2]);
+                        }
+                        tran.show(fragments[2]);
+                        //fragment = fragments[2];
                         break;
 
                     case R.id.chat:
-                        fragment = fragments[3];
+                        if (fragments[3] == null) {
+                            fragments[3] = new Tab4Fragment();
+                            tran.add(R.id.container, fragments[3]);
+                        }
+                        tran.show(fragments[3]);
+                        //fragment = fragments[3];
                         break;
 
                     case R.id.account:
-                        fragment = fragments[4];
+                        if (fragments[4] == null) {
+                            fragments[4] = new Tab5Fragment();
+                            tran.add(R.id.container, fragments[4]);
+                        }
+                        tran.show(fragments[4]);
+                        //fragment = fragments[4];
                         break;
                 }
 
                 //기존 프래그먼트를 없애고 새로운 프래그먼트로 재배치
-                tran.replace(R.id.container, fragment);
+//                tran.replace(R.id.container, fragment);
                 //tran.addToBackStack(null);
 
                 tran.commit();

@@ -8,6 +8,7 @@ public class Item {
     public String time;
     public String price;
 
+
     public Item(){
 
     }
@@ -18,7 +19,7 @@ public class Item {
         this.location = location;
         this.time = time;
         this.price = price;
-
     }
+
 
 }
