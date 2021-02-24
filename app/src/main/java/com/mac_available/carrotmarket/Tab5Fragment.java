@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 
 public class Tab5Fragment extends Fragment {
 
-    LinearLayout firstLinearLayout;
+    LinearLayout firstLinearLayout, secondLinearLayout;
+    Button logOut;
 
     @Nullable
     @Override
@@ -30,8 +32,28 @@ public class Tab5Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-      firstLinearLayout = view.findViewById(R.id.firstLinearLayout);
-      firstLinearLayout.setOnClickListener(new View.OnClickListener() {
+        logOut = view.findViewById(R.id.LogOut);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+
+                getActivity().finish();
+            }
+        });
+        firstLinearLayout = view.findViewById(R.id.firstLinearLayout);
+        firstLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DescriptionRegardingAvailableActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        secondLinearLayout = view.findViewById(R.id.secondLinearLayout);
+        secondLinearLayout.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
               Intent intent = new Intent(getActivity(), GoogleMapActivity.class);

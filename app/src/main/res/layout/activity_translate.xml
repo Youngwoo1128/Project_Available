@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".TranslateActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/fortoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/tranFirstLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fortoolbar"
+        android:textAllCaps="false"
+        android:text="Hello guys."/>
+
+    <TextView
+        android:id="@+id/tranSecondLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_below="@id/tranFirstLine"
+        android:text="Thank you for using Available."/>
+
+    <TextView
+        android:id="@+id/tranThirdLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tranSecondLine"
+        android:textAllCaps="false"
+        android:text="Available is still in development phase. Now it's version is 1.0."/>
+
+    <TextView
+        android:id="@+id/tranFourthLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tranThirdLine"
+        android:textAllCaps="false"
+        android:text="Available's developer is making it by himself."/>
+
+    <TextView
+        android:id="@+id/tranFifthLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tranFourthLine"
+        android:textAllCaps="false"
+        android:text="So update may be delayed regarding Available."/>
+
+    <TextView
+        android:id="@+id/tranSixthLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tranFifthLine"
+        android:textAllCaps="false"
+        android:text="But Available will keep trying to update it."/>
+
+    <TextView
+        android:id="@+id/tranSeventhLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tranSixthLine"
+        android:textAllCaps="false"
+        android:text="Appreciate about your using. Thank you."/>
+
+    <TextView
+        android:id="@+id/text_Available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available"
+        android:textAllCaps="false"
+        android:layout_below="@+id/tranSeventhLine"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mapicon16"
+        android:layout_toLeftOf="@+id/text_Available"
+        android:layout_alignTop="@+id/text_Available"
+        android:padding="4dp"/>
+
+
+
+</RelativeLayout>

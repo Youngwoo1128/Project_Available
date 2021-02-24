@@ -28,6 +28,8 @@ public class ChattingActivity extends AppCompatActivity {
     ArrayList<ChattingVO> items;
     ChattingAdapter adapter;
 
+    DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,11 @@ public class ChattingActivity extends AppCompatActivity {
         adapter = new ChattingAdapter(this,items);
         listView.setAdapter(adapter);
 
+       // Toast.makeText(this, "" + getIntent().getStringExtra("server"), Toast.LENGTH_SHORT).show();
+
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference;
+
         databaseReference = firebaseDatabase.getReference("chat").child(G.currentItem.masterId+"&&"+G.myId);
         if (getIntent().getStringExtra("server") != null){
             databaseReference = firebaseDatabase.getReference("chat").child(getIntent().getStringExtra("server"));
@@ -94,9 +98,7 @@ public class ChattingActivity extends AppCompatActivity {
         String time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         if (data.equals("")) return;
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("chat");
-        databaseReference.child(G.currentItem.masterId+"&&"+G.myId).child(time).setValue(new ChattingVO(G.myId, data, time)).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReference.child(time).setValue(new ChattingVO(G.myId, data, time)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(ChattingActivity.this, "전송완료", Toast.LENGTH_SHORT).show();

@@ -23,7 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarrotMarket"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChattingActivity"></activity>
+        <activity android:name=".TranslateActivity"></activity>
+        <activity android:name=".DescriptionRegardingAvailableActivity" />
+        <activity android:name=".ChattingActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".GoogleMapActivity" />
         <activity android:name=".ItemVIewBoastActicity" />

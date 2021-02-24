@@ -15,8 +15,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Available"
+            android:layout_marginBottom="2dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="#FF000000"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        android:id="@+id/secondLinearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="내 동네 설정하기"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="2dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -24,5 +46,16 @@
             android:layout_marginTop="4dp"
             android:background="#FF000000"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_gravity="end"
+        android:textAllCaps="false"
+        android:clickable="true"/>
+
+
     
 </LinearLayout>

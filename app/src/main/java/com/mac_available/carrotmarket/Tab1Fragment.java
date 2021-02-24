@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +41,8 @@ public class Tab1Fragment extends Fragment {
     View.OnClickListener listener;
 
     ImageView search, filter, bell, movie;
+
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -77,10 +80,19 @@ public class Tab1Fragment extends Fragment {
         filter = view.findViewById(R.id.filter);
         bell = view.findViewById(R.id.bell);
         movie = view.findViewById(R.id.movie);
+        swipeRefreshLayout = view.findViewById(R.id.frag1Refresh);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                loadData();
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
 
         movie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "aaa", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), MovieActivity.class);
                 startActivity(intent);
             }
