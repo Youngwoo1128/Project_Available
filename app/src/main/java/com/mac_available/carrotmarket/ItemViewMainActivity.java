@@ -1,10 +1,13 @@
 package com.mac_available.carrotmarket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,6 +27,7 @@ public class ItemViewMainActivity extends AppCompatActivity {
     TextView tv_title,tv_content,tv_price;
     ImageView iv;
     Button btnBuy;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,19 @@ public class ItemViewMainActivity extends AppCompatActivity {
         tv_content.setText(content);
         Glide.with(this).load(img).into(iv);
 
+        toolbar = findViewById(R.id.itemView_main_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void clickChatting(View view) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="2dp"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -11,9 +12,11 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/direct"
-        android:layout_toLeftOf="@+id/available"
         android:layout_centerInParent="true"
-        android:layout_marginRight="8dp"/>
+        android:layout_above="@+id/et_login_inputid"
+        android:layout_alignLeft="@+id/et_login_inputid"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/available"
@@ -22,51 +25,65 @@
         android:text="Available"
         android:textAllCaps="false"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="4dp"/>
+        android:layout_above="@+id/et_login_inputid"
+        android:layout_marginBottom="8dp"/>
 
 
     <EditText
         android:id="@+id/et_login_inputid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/available"
-        android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="id" />
+        android:hint="id"
+        android:layout_centerInParent="true"/>
 
     <EditText
+        android:id="@+id/et_login_inputpw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="pw"
-        android:id="@+id/et_login_inputpw"
-        android:layout_below="@+id/et_login_inputid"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/et_login_inputid"/>
 
     <Button
+        android:id="@+id/use"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/kakao"
-        android:layout_alignRight="@+id/kakao"
         android:onClick="clickBtn"
-        android:text="이용하기" />
+        android:text="이용하기"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/kakao"
+        android:layout_alignRight="@+id/et_login_inputpw"
+        android:backgroundTint="#91634D"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/kakao"
-        android:layout_alignLeft="@+id/kakao"
         android:onClick="clickAccount"
-        android:text="회원가입" />
+        android:text="회원가입"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/kakao"
+        android:layout_alignLeft="@+id/et_login_inputpw"
+        android:backgroundTint="#91634D"/>
 
     <ImageView
         android:id="@+id/kakao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_login_inputpw"
-        android:layout_centerHorizontal="true"
         android:onClick="clickKakao"
-        android:src="@drawable/kakao_login_medium_narrow" />
+        android:src="@drawable/kakao_login_medium_narrow"
+        android:layout_below="@+id/et_login_inputpw"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickTour"
+        android:text="둘러보기"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="#91634D"/>
 
 
 </RelativeLayout>

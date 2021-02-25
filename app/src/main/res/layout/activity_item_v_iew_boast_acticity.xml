@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ItemVIewBoastActicity">
+    tools:context=".ItemVIewBoastActivity"
+    android:background="#91AAB8">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemView_Boast_toolbar"/>
 
     <ImageView
         android:id="@+id/itemViewBoastImageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="300dp"
+        android:layout_below="@+id/itemView_Boast_toolbar"/>
 
     <TextView
         android:id="@+id/itemViewBoastTitle"
@@ -19,6 +25,7 @@
         android:layout_below="@+id/itemViewBoastImageView"
         android:layout_marginTop="8dp"
         android:textStyle="bold"
+        android:layout_marginLeft="16dp"
         android:textSize="16sp"/>
 
     <TextView
@@ -26,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/itemViewBoastTitle"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"/>
 
 

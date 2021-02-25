@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/teal_200"
+    android:background="#91AAB8"
     android:padding="16dp">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,13 +22,13 @@
 
     <Button
         android:id="@+id/localBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:text="+"
-        android:textColor="#FF0000"
-        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="#91634D"
         android:clickable="true"/>
 
     

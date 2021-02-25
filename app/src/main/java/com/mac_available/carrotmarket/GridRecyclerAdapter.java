@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +53,13 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter {
         public VH(@NonNull View itemView) {
             super(itemView);
             iv = itemView.findViewById(R.id.iv_category);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

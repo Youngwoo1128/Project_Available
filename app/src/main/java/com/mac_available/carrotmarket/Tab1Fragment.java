@@ -27,22 +27,18 @@ import java.util.ArrayList;
 
 public class Tab1Fragment extends Fragment {
 
-
     // ArrayList<Item> items = new ArrayList<>();
     RecyclerView recyclerView;
     AdProductionAdapter adapter;
 
     Button btn;
 
-    //spinner
-    Spinner spinner;
-    ArrayAdapter arrayAdapter;
-
     View.OnClickListener listener;
 
     ImageView search, filter, bell, movie;
 
     SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Nullable
     @Override
@@ -69,30 +65,25 @@ public class Tab1Fragment extends Fragment {
 //        adapter = new AdProduction(getActivity(), items);
 //        recyclerView.setAdapter(adapter);
 
-        spinner = view.findViewById(R.id.spinner);
-        arrayAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.datas, R.layout.spinner_selected);
-        spinner.setAdapter(arrayAdapter);
 
-        arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         //아이콘 참조
-        search = view.findViewById(R.id.search);
+        search = view.findViewById(R.id.search128);
         filter = view.findViewById(R.id.filter);
         bell = view.findViewById(R.id.bell);
         movie = view.findViewById(R.id.movie);
         swipeRefreshLayout = view.findViewById(R.id.frag1Refresh);
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                loadData();
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
-//        });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         movie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "aaa", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), MovieActivity.class);
                 startActivity(intent);
             }
@@ -123,18 +114,6 @@ public class Tab1Fragment extends Fragment {
         filter.setOnClickListener(listener);
         bell.setOnClickListener(listener);
 
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,9 +1,12 @@
 package com.mac_available.carrotmarket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -27,6 +30,7 @@ public class MovieActivity extends AppCompatActivity {
     ArrayList<String> items = new ArrayList<>();
     ListView listView;
     ArrayAdapter listViewAdapter;
+    Toolbar toolbar;
 
     String apiKey= "a5200f16d459977281a06cf3719d898b";
 
@@ -38,6 +42,21 @@ public class MovieActivity extends AppCompatActivity {
         listView = findViewById(R.id.movie_listView);
         listViewAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(listViewAdapter);
+
+        toolbar = findViewById(R.id.movie_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void clickMovie(View view) {

@@ -111,4 +111,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AccountActivity.class);
         startActivity(intent);
     }
+
+    public void clickTour(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        Toast.makeText(this, "로그인을 하지 않으면 원활한 이용을 할 수 없을수도 있습니다.", Toast.LENGTH_SHORT).show();
+    }
 }

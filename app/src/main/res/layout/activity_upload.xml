@@ -88,7 +88,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="0dp"
             android:layout_gravity="right"
-            android:backgroundTint="#FFFF0000"
+            android:backgroundTint="#91634D"
             android:onClick="clickUpload"/>
 
 

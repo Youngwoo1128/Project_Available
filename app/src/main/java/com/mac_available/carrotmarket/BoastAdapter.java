@@ -70,7 +70,7 @@ public class BoastAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
-                    Intent intent = new Intent(context, ItemVIewBoastActicity.class);
+                    Intent intent = new Intent(context, ItemVIewBoastActivity.class);
                     intent.putExtra("title", items.get(pos).title);
                     intent.putExtra("msg", items.get(pos).msg);
                     intent.putExtra("img", items.get(pos).imageUri);

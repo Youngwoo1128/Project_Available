@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".AccountActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -35,15 +34,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="id"
-        android:ems="10"/>
+        android:ems="10"
+        android:layout_centerInParent="true"/>
 
     <EditText
         android:id="@+id/et_accountPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="pw"
-        android:ems="10"/>
+        android:ems="10"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/et_accountId"/>
 
 
 
-</LinearLayout>
+</RelativeLayout>

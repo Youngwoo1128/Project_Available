@@ -81,6 +81,7 @@
         android:layout_below="@id/seventhLine"
         android:onClick="clickFor"
         android:layout_alignParentRight="true"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        android:backgroundTint="#91634D"/>
 
 </RelativeLayout>

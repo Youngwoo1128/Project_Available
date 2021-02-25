@@ -2,18 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="1dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#91AAB8">
 
     <RelativeLayout
         android:id="@+id/frag1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/bell"
+            android:background="#000000"
+            android:layout_marginTop="6dp"/>
 
         <ImageView
             android:id="@+id/bell"
@@ -30,32 +34,32 @@
             android:id="@+id/filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/filter_icon"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="50dp"
             android:layout_marginTop="8dp"
-            android:tag="filter"
-            android:clickable="true"/>
+            android:layout_marginRight="56dp"
+            android:clickable="true"
+            android:src="@drawable/filter_icon"
+            android:tag="filter" />
 
         <ImageView
             android:id="@+id/movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/filter"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="22dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="295dp"
             android:layout_toLeftOf="@id/filter"
             android:clickable="true"
             android:src="@drawable/ic_baseline_movie_24" />
 
         <ImageView
-            android:id="@+id/search"
+            android:id="@+id/search128"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/movie"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="136dp"
+            android:layout_marginTop="-3dp"
+            android:layout_marginRight="100dp"
             android:layout_toLeftOf="@+id/movie"
             android:clickable="true"
             android:src="@drawable/search_icon"
@@ -75,7 +79,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
         android:orientation="vertical"
-        android:padding="38dp"
+        android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -87,7 +91,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:text="+"
-        android:backgroundTint="#FF7F00"
-        android:layout_marginRight="16dp"/>
+        android:backgroundTint="#91634D"/>
 
 </RelativeLayout>

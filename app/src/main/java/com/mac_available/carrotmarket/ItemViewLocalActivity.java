@@ -1,13 +1,17 @@
 package com.mac_available.carrotmarket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class ItemViewLocalActivity extends AppCompatActivity {
 
     TextView tv_name, tv_message;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +26,18 @@ public class ItemViewLocalActivity extends AppCompatActivity {
 
         tv_name.setText(name);
         tv_message.setText(message);
+
+        toolbar = findViewById(R.id.itemView_local_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

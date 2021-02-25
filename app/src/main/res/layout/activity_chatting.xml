@@ -5,26 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".ChattingActivity">
+    tools:context=".ChattingActivity"
+    android:background="#FFE6E6E4">
+
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/chattingListView"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:transcriptMode="alwaysScroll"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
 
     <EditText
         android:id="@+id/et_chat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_200"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_upload"/>
 
     <Button
+        android:id="@+id/chattingClickSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="보내기"
+        android:onClick="clickSend"
         android:layout_gravity="right"
-        android:onClick="clickSend"/>
+        android:backgroundTint="#91634D"/>
+
+</LinearLayout>
+
+
+
 
 </LinearLayout>

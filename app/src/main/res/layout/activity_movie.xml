@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".MovieActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/movie_toolbar"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -14,12 +17,15 @@
         android:text="상영영화 보기"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:onClick="clickMovie"/>
+        android:onClick="clickMovie"
+        android:backgroundTint="#91634D"
+        android:padding="8dp"/>
 
 
     <ListView
         android:id="@+id/movie_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/movie_toolbar"/>
 
 </RelativeLayout>

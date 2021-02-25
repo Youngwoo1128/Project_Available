@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".BoastEditActivity">
+    tools:context=".BoastEditActivity"
+    android:background="#91AAB8">
 
     <ImageView
         android:id="@+id/iv"
@@ -20,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="사진 올리기"
         android:layout_gravity="right"
-        android:backgroundTint="#FFFF0000"
+        android:backgroundTint="#91634D"
         android:onClick="clickBoast"/>
 
     <EditText
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="올리기"
-        android:backgroundTint="#FFFF0000"
+        android:backgroundTint="#91634D"
         android:layout_gravity="right"
         android:onClick="clickBoastUpload"/>
 

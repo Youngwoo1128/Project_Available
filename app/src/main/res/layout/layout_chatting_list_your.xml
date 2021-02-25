@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="16dp">
 
@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="bbb"
         android:id="@+id/myName"
-        android:textSize="24sp"
+        android:textSize="12sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -18,8 +18,10 @@
         android:text="message"
         android:id="@+id/myMessage"
         android:layout_below="@+id/myName"
+        android:background="@drawable/bg_yourbox"
         android:textSize="18sp"
-        android:textStyle="italic"/>
+        android:padding="4dp"
+        android:textColor="#333333"/>
 
     <TextView
         android:layout_width="wrap_content"

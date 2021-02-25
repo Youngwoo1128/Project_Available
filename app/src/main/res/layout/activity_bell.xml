@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".BellActivity">
 
-    <ListView
-        android:id="@+id/listView"
+    <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/bell_toolbar"/>
+
+    <TextView
+        android:id="@+id/bell_coming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coming soon"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/direct"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/bell_coming"
+        android:layout_marginBottom="8dp"/>
 
 
-</LinearLayout>
+
+
+
+</RelativeLayout>

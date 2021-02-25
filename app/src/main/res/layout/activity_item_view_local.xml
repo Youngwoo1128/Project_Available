@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@drawable/bg_upload"
-    tools:context=".ItemViewLocalActivity">
+    tools:context=".ItemViewLocalActivity"
+    android:backgroundTint="#91AAB8">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemView_local_toolbar"/>
 
     <TextView
+        android:layout_below="@+id/itemView_local_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemViewName"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"/>
 
     <TextView
@@ -19,6 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:textColor="#FF000000"
+        android:layout_marginLeft="16dp"
         android:layout_below="@+id/itemViewName"/>
 
 </RelativeLayout>

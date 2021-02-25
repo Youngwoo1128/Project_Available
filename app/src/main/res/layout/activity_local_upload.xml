@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LocalUploadActivity">
+    tools:context=".LocalUploadActivity"
+    android:background="#91AAB8">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="올리기"
-        android:onClick="localUpload"/>
+        android:onClick="localUpload"
+        android:backgroundTint="#91634D"/>
 
 </LinearLayout>
