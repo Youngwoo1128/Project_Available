@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
-                    Toast.makeText(LoginActivity.this, "아이디 없어용", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "아이디가 없습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String str = dataSnapshot.getValue(String.class);
