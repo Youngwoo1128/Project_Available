@@ -89,10 +89,11 @@ public class UploadActivity extends AppCompatActivity {
                         price = etPrice.getText().toString();
                         content = etContent.getText().toString();
                         time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+                        String visualTime = new SimpleDateFormat("MM_dd-HH:mm").format(new Date());
                         location = tvLocation.getText().toString();
                         firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference itemRef = firebaseDatabase.getReference("items");
-                        itemRef.push().setValue(new ProductVO(uploadUri, title, price, content,location,time,G.myId)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        itemRef.push().setValue(new ProductVO(uploadUri, title, price, content,location,visualTime,G.myId)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(UploadActivity.this, "uploaded", Toast.LENGTH_SHORT).show();

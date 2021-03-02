@@ -3,8 +3,9 @@ package com.mac_available.carrotmarket;
 public class ChattingVO {
 
     public String id;
-    public String message;
     public String time;
+    public String message;
+
 
     public ChattingVO() {
     }

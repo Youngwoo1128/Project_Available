@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +44,7 @@ public class ChattingListAdapter extends RecyclerView.Adapter<ChattingListAdapte
     class VH extends RecyclerView.ViewHolder{
 
         TextView tvChattingListId;
+
         public VH(@NonNull View itemView) {
             super(itemView);
             tvChattingListId = itemView.findViewById(R.id.tv_chatting_list_id);
@@ -54,8 +56,10 @@ public class ChattingListAdapter extends RecyclerView.Adapter<ChattingListAdapte
                     int pos = getAdapterPosition();
                     if (serverNum.get(pos) == 1){
                         intent.putExtra("server", G.myId + "&&" + items.get(pos));
+                        Toast.makeText(context, "if o", Toast.LENGTH_SHORT).show();
                     } else {
                         intent.putExtra("server", items.get(pos) + "&&" + G.myId);
+                        Toast.makeText(context, "if x", Toast.LENGTH_SHORT).show();
                     }
 
                     context.startActivity(intent);

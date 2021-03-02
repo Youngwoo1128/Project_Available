@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".UploadActivity">
+    tools:context=".UploadActivity"
+    android:background="#91AAB8">
     
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="잘 나온 사진으로 등록해주세요!"/>
+        android:text="잘 나온 사진으로 등록해주세요!"
+        android:textColor="#FF000000"/>
     
     <ImageView
         android:id="@+id/image"
@@ -33,6 +35,7 @@
         android:layout_toRightOf="@+id/image"
         android:layout_marginTop="24dp"
         android:layout_marginLeft="34dp"
+        android:textColor="#FF000000"
         android:textSize="24sp"/>
 
     <EditText
@@ -78,7 +81,8 @@
             android:layout_below="@+id/price"
             android:background="@drawable/bg_upload"
             android:layout_marginTop="4dp"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:hint="제품 상태 또는 설명을 적어주세요!!"/>
 
         <Button
             android:layout_width="wrap_content"

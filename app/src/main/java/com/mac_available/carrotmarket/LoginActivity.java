@@ -66,7 +66,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                     G.myId = id;
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    byte[] account_id = pw.getBytes();
+                    String userId = String.valueOf(account_id);
+                    SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("userInfo", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("userKey", userId).commit();
                     startActivity(intent);
+                    finish();
 
                 } else {
                     Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -74,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                 //Toast.makeText(LoginActivity.this, ""+str, Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
 //        Intent intent = new Intent(this,MainActivity.class);
 //        startActivity(intent);
@@ -92,9 +100,13 @@ public class LoginActivity extends AppCompatActivity {
                             if (user != null) {
                                 long id = user.getId();
                                 String userId = String.valueOf(id);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                G.myId = "kakao"+userId;
                                 SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("userInfo", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("userKey", userId).commit();
+                                startActivity(intent);
+                                finish();
                             }
                             return null;
                         }
@@ -115,6 +127,6 @@ public class LoginActivity extends AppCompatActivity {
     public void clickTour(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        Toast.makeText(this, "로그인을 하지 않으면 원활한 이용을 할 수 없을수도 있습니다.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "로그인을 하지 않으면 원활한 이용을 할 수 없습니다.", Toast.LENGTH_SHORT).show();
     }
 }

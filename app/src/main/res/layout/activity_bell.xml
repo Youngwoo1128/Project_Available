@@ -11,26 +11,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/bell_toolbar"/>
 
+   <TextView
+       android:id="@+id/bell_firstLine"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="새로운 기능"
+       android:layout_below="@+id/bell_toolbar"
+       android:layout_marginTop="8dp"
+       android:textColor="#FF000000"
+       android:textStyle="bold"
+       android:textSize="16sp"
+       android:padding="8dp"/>
+
     <TextView
-        android:id="@+id/bell_coming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coming soon"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textAllCaps="false"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/bell_firstLine"
+        android:text="상영영화 보기 기능이 추가 되었습니다."
+        android:layout_marginTop="4dp"
+        android:padding="8dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/direct"
-        android:layout_centerInParent="true"
-        android:layout_above="@+id/bell_coming"
-        android:layout_marginBottom="8dp"/>
-
-
-
+        android:src="@drawable/bell_icon"
+        android:layout_toRightOf="@+id/bell_firstLine"
+        android:layout_below="@id/bell_toolbar"
+        android:layout_marginTop="16dp"/>
 
 
 </RelativeLayout>

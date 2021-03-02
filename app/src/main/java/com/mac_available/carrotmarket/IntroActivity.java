@@ -33,11 +33,13 @@ public class IntroActivity extends AppCompatActivity {
 
                 Intent intent;
                 if (userID != null){
+                    G.myId = userID;
                     intent = new Intent(IntroActivity.this, MainActivity.class);
                 }else{
                     intent = new Intent(IntroActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
+                finish();
 
             }
 

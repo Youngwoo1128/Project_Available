@@ -32,7 +32,7 @@ public class ItemVIewBoastActivity extends AppCompatActivity {
         String title = getIntent().getStringExtra("title");
         String msg = getIntent().getStringExtra("msg");
         String img = getIntent().getStringExtra("img");
-
+//////////////////////////////////////////////////////////////////
         tv_title.setText(title);
         tv_message.setText(msg);
         Glide.with(this).load(img).into(iv);

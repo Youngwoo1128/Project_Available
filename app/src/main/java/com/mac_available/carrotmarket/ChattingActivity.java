@@ -94,11 +94,13 @@ public class ChattingActivity extends AppCompatActivity {
     }
 
     public void clickSend(View view) {
+
         String data = editText.getText().toString();
         String time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String visualTime = new SimpleDateFormat("HH : mm").format(new Date());
         if (data.equals("")) return;
 
-        databaseReference.child(time).setValue(new ChattingVO(G.myId, data, time)).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReference.child(time).setValue(new ChattingVO(G.myId, data, visualTime)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(ChattingActivity.this, "전송완료", Toast.LENGTH_SHORT).show();

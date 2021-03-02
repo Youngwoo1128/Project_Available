@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +21,12 @@ import java.util.Arrays;
 public class Tab4Fragment extends Fragment {
 
     RecyclerView recyclerView;
+
     ArrayList<String> items;
     ArrayList<Integer> serverNum;
     ChattingListAdapter adapter;
+
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -40,7 +44,14 @@ public class Tab4Fragment extends Fragment {
         adapter = new ChattingListAdapter(getContext(), items, serverNum);
         recyclerView.setAdapter(adapter);
 
-
+        swipeRefreshLayout = view.findViewById(R.id.chattingRefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadChattingData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override
