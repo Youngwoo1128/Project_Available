@@ -99,12 +99,16 @@ public class LoginActivity extends AppCompatActivity {
                         public Unit invoke(User user, Throwable throwable) {
                             if (user != null) {
                                 long id = user.getId();
-                                String userId = String.valueOf(id);
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                G.myId = "kakao"+userId;
-                                SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("userInfo", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("userKey", userId).commit();
+//                                String userId = String.valueOf(id);
+//                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                G.myId = "kakao"+userId;
+//                                SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("userInfo", MODE_PRIVATE);
+//                                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                                editor.putString("userKey", userId).commit();
+//                                startActivity(intent);
+//                                finish();
+
+                                Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
