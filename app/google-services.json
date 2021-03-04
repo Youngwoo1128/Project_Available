@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1055235852327",
+    "firebase_url": "https://available-b4d03-default-rtdb.firebaseio.com",
     "project_id": "available-b4d03",
     "storage_bucket": "available-b4d03.appspot.com"
   },
@@ -9,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1055235852327:android:1661bf1213e216fa176602",
         "android_client_info": {
-          "package_name": "com.mac_available.carrotmarket"
+          "package_name": "com.mac_available.available"
         }
       },
       "oauth_client": [

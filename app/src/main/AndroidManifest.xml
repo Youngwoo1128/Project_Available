@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mac_available.carrotmarket">
+    package="com.mac_available.available">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,7 +15,7 @@
         android:required="true" />
 
     <application
-        android:name=".KakaoLogin"
+        android:name="com.mac_available.available.KakaoLogin"
         android:allowBackup="true"
         android:icon="@drawable/direct"
         android:label="@string/app_name"
@@ -23,35 +23,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarrotMarket"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TranslateActivity"></activity>
-        <activity android:name=".DescriptionRegardingAvailableActivity" />
-        <activity android:name=".ChattingActivity" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".GoogleMapActivity" />
-        <activity android:name=".ItemVIewBoastActivity" />
-        <activity android:name=".ItemViewLocalActivity" />
-        <activity android:name=".ItemViewMainActivity" />
-        <activity android:name=".MessageActivity" />
-        <activity android:name=".MovieActivity" />
-        <activity android:name=".IntroActivity">
+        <activity android:name="com.mac_available.available.TranslateActivity"></activity>
+        <activity android:name="com.mac_available.available.DescriptionRegardingAvailableActivity" />
+        <activity android:name="com.mac_available.available.ChattingActivity" />
+        <activity android:name="com.mac_available.available.AccountActivity" />
+        <activity android:name="com.mac_available.available.GoogleMapActivity" />
+        <activity android:name="com.mac_available.available.ItemVIewBoastActivity" />
+        <activity android:name="com.mac_available.available.ItemViewLocalActivity" />
+        <activity android:name="com.mac_available.available.ItemViewMainActivity" />
+        <activity android:name="com.mac_available.available.MessageActivity" />
+        <activity android:name="com.mac_available.available.MovieActivity" />
+        <activity android:name="com.mac_available.available.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocationSearchActivity" />
-        <activity android:name=".LocalUploadActivity" />
-        <activity android:name=".BoastEditActivity" />
-        <activity android:name=".UploadActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".BellActivity" />
-        <activity android:name=".FilterActivity" />
+        <activity android:name="com.mac_available.available.LocationSearchActivity" />
+        <activity android:name="com.mac_available.available.LocalUploadActivity" />
+        <activity android:name="com.mac_available.available.BoastEditActivity" />
+        <activity android:name="com.mac_available.available.UploadActivity" />
+        <activity android:name="com.mac_available.available.LoginActivity" />
+        <activity android:name="com.mac_available.available.BellActivity" />
+        <activity android:name="com.mac_available.available.FilterActivity" />
         <activity
-            android:name=".SearchActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".AdvertisingProduction" />
-        <activity android:name=".MainActivity" /> <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
+            android:name="com.mac_available.available.SearchActivity"
+            android:parentActivityName="com.mac_available.available.MainActivity" />
+        <activity android:name="com.mac_available.available.AdvertisingProduction" />
+        <activity android:name="com.mac_available.available.MainActivity" /> <!-- 로그인 입력창이 있는 액티비티 (웹뷰로 보여주고 있는) -->
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -67,7 +67,7 @@
         </activity>
 
         <service
-            android:name=".MyFCMService"
+            android:name="com.mac_available.available.MyFCMService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
