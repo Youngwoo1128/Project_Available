@@ -25,6 +25,8 @@ public class IntroActivity extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(this, R.anim.introanimation);
         relativeLayout.startAnimation(animation);
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -66,11 +66,11 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                     G.myId = id;
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    byte[] account_id = pw.getBytes();
-                    String userId = String.valueOf(account_id);
+//                    byte[] account_id = pw.getBytes();
+//                    String userId = String.valueOf(account_id);
                     SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("userInfo", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("userKey", userId).commit();
+                    editor.putString("userKey", id).commit();
                     startActivity(intent);
                     finish();
 
@@ -107,6 +107,10 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("userKey", userId).commit();
                                 startActivity(intent);
                                 finish();
+
+//                                Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+//                                startActivity(intent);
+//                                finish();
                             }
                             return null;
                         }

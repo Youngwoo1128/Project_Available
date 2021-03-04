@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">CarrotMarket</string>
-    <string name="prompt">도시명</string>
+    <string name="app_name" translatable="false">Available</string>
+    <string name="prompt" translatable="false">도시명</string>
 </resources>
