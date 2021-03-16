@@ -74,9 +74,17 @@ public class UploadActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
 
     public void clickUpload(View view) {
+        title = etTitle.getText().toString();
+        price = etPrice.getText().toString();
+        content = etContent.getText().toString();
         firebaseStorage = FirebaseStorage.getInstance();
+        location = tvLocation.getText().toString();
         String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".png";
         final StorageReference imageRef = firebaseStorage.getReference("images" + fileName);
+        if (imageUri == null || title == null || title.equals("") || price == null || price.equals("") || content ==  null || content.equals("") || location == null || location.equals("")){
+            Toast.makeText(UploadActivity.this, "올리실 제품을 상세히 적어주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
         imageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -84,12 +92,9 @@ public class UploadActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         uploadUri = uri.toString();
-                        title = etTitle.getText().toString();
-                        price = etPrice.getText().toString();
-                        content = etContent.getText().toString();
                         time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
                         String visualTime = new SimpleDateFormat("MM_dd-HH:mm").format(new Date());
-                        location = tvLocation.getText().toString();
+
                         firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference itemRef = firebaseDatabase.getReference("items");
                         itemRef.push().setValue(new ProductVO(uploadUri, title, price, content,location,visualTime,G.myId)).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -98,12 +103,13 @@ public class UploadActivity extends AppCompatActivity {
                                 Toast.makeText(UploadActivity.this, "uploaded", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
+
                         });
 
 
                     }
                 });
-            }
+           }
         });
         ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(this);

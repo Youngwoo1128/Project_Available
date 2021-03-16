@@ -1,8 +1,10 @@
 package com.mac_available.available;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ public class LocalUploadActivity extends AppCompatActivity {
 
     EditText et_local, et_local2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,10 @@ public class LocalUploadActivity extends AppCompatActivity {
 
         String name = et_local.getText().toString();
         String msg = et_local2.getText().toString();
+        if (name == null || name.equals("") || msg ==null || msg.equals("")){
+            new AlertDialog.Builder(this).setMessage("상세히 적어주시기 바랍니다.").setPositiveButton("확인",null).create().show();
+            return;
+        }
 
         Retrofit retrofit = RetrofitHelper.getRetrofitInstanceScalars();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);

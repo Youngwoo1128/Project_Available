@@ -3,6 +3,7 @@ package com.mac_available.available;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -64,7 +65,12 @@ public class BoastEditActivity extends AppCompatActivity {
 
 
     public void clickBoastUpload(View view) {
-
+        title = etName.getText().toString();
+        msg = etMsg.getText().toString();
+        if (imageUri == null || title == null || title.equals("") || msg == null || msg.equals("")){
+            new AlertDialog.Builder(this).setMessage("상세히 적어주세요!!").setPositiveButton("확인", null).create().show();
+            return;
+        }
         firebaseStorage = FirebaseStorage.getInstance();
         String fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".png";
         final StorageReference imgRef = firebaseStorage.getReference("boast" + fileName);
@@ -75,8 +81,7 @@ public class BoastEditActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         uploadUri = uri.toString();
-                        title = etName.getText().toString();
-                        msg = etMsg.getText().toString();
+
                         firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference itemRef = firebaseDatabase.getReference("boast");
                         itemRef.push().setValue(new BoastVO(uploadUri,title,msg)).addOnSuccessListener(new OnSuccessListener<Void>() {

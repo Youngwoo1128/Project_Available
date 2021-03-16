@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,6 +42,13 @@ public class LoginActivity extends AppCompatActivity {
 
         etId = findViewById(R.id.et_login_inputid);
         etPw = findViewById(R.id.et_login_inputpw);
+        etPw.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                clickBtn(etPw);
+                return true;
+            }
+        });
 
     }
 

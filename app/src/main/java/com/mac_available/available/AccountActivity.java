@@ -48,6 +48,9 @@ public class AccountActivity extends AppCompatActivity {
 
         String Id = etId.getText().toString();
         String pw = etPw.getText().toString();
+        if (Id == null || Id.equals("") || pw == null || pw.equals("")){
+            return;
+        }
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("users");
