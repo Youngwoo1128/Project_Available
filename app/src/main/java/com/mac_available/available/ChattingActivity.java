@@ -103,7 +103,7 @@ public class ChattingActivity extends AppCompatActivity {
         databaseReference.child(time).setValue(new ChattingVO(G.myId, data, visualTime)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(ChattingActivity.this, "전송완료", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ChattingActivity.this, "전송완료", Toast.LENGTH_SHORT).show();
                 editText.setText("");
             }
         });

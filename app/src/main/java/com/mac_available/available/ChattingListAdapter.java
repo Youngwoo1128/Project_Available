@@ -56,10 +56,10 @@ public class ChattingListAdapter extends RecyclerView.Adapter<ChattingListAdapte
                     int pos = getAdapterPosition();
                     if (serverNum.get(pos) == 1){
                         intent.putExtra("server", G.myId + "&&" + items.get(pos));
-                        Toast.makeText(context, "if o", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "if o", Toast.LENGTH_SHORT).show();
                     } else {
                         intent.putExtra("server", items.get(pos) + "&&" + G.myId);
-                        Toast.makeText(context, "if x", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "if x", Toast.LENGTH_SHORT).show();
                     }
 
                     context.startActivity(intent);
